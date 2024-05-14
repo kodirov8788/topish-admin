@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flags {
+  background-image: url("./backgroundImages/flags.jpg");
+}
+
+.uzflag {
+  background-image: url("./backgroundImages/uz-flag.jpg");
+}
+
+.login_backImage {
+  background-image: url("./backgroundImages/login.jpg");
+}
