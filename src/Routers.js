@@ -2,7 +2,6 @@ import { Link, Navigate, Route, Routes } from "react-router-dom";
 import Admin from "./admin/Admin";
 import Testpage from "./pages/Testpage";
 import MainPage from "./pages/MainPage";
-import Login from "./pages/Login";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
@@ -12,6 +11,7 @@ import Createproduct from "./admin/adminComponents/product/Createproduct";
 import Editcategory from "./admin/adminComponents/category/Editcategory";
 import Editproduct from "./admin/adminComponents/product/Editproduct";
 import StartTest from "./pages/StartTest";
+import SignIn from './pages/Login';
 
 function Routers() {
   const { user } = useAuthContext()
@@ -27,8 +27,8 @@ function Routers() {
 
 
         <Route path='/countrytest' element={<Testpage />} />
-        <Route path='/login' element={<Login />} />
-        <Route path="/admin" element={!user ? <Admin /> : <Navigate to="/login" />}>
+        <Route path='/login' element={<SignIn />} />
+        <Route path="/admin" element={user ? <Admin /> : <Navigate to="/login" />}>
           {/* Child Routes */}
           <Route path='' element={<Dashboard />} />
           <Route path='createcategory' element={<Createcategory />} />

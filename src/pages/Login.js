@@ -1,35 +1,50 @@
 import { useContext, useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { allActions } from "../store/root-action";
+import { useActions } from "../hooks/useActions";
+import { ButtonSpinner } from "../components/buttonSpinner/buttonSpinner";
 
-const Login = () => {
+const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error } = useLogin();
-  const { isLoading, setIsLoading } = useContext(AuthContext);
+  // const { login, error } = useLogin();
+  // const { isLoading, setIsLoading } = useContext(AuthContext);
 
   const [visible, setVisible] = useState(false);
-  // console.log(visible)
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    await login(username, password);
-    setIsLoading(false);
-  };
 
+  /// RTK
+
+  const { isLoading } = useSelector((state) => state.user);
+  const { login } = useActions();
+
+  const handleSubmit = async (e) => {
+    login({
+      phoneNumber: username,
+      password: password,
+      mobileToken: "fcmToken",
+    });
+
+    e.preventDefault();
+    // setIsLoading(true);
+    // await login(username, password);
+    console.log(username, password);
+    // setIsLoading(false);
+  };
   return (
     <section className=" ">
       <div className="absolute login_backImage bg-cover w-full h-full top-0 left-0">
         <div className="absolute  bg-cover w-full h-full bg-black/30 "></div>
       </div>
       <div className=" absolute  w-full z-[100] flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a
-          href="#"
+        <Link
+          to={"/"}
           className="flex items-center mb-6 text-2xl font-semibold text-white"
         >
           TESTOP.UZ
-        </a>
+        </Link>
         <div className="w-full bg-white/80 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -99,10 +114,11 @@ const Login = () => {
                 </div>
               </div>
               <button
+                disabled={isLoading}
                 type="submit"
-                className="shadow  text-black dark:text-white w-3/5 mx-auto flex justify-center text-center  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="shadow  text-black dark:text-white h-10 w-3/5 mx-auto flex justify-center text-center  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-                Sign in
+               {isLoading ?  <ButtonSpinner/> : "Sign in"}
               </button>
             </form>
           </div>
@@ -112,4 +128,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;

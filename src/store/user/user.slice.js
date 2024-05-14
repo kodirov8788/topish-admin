@@ -19,7 +19,7 @@ export const userSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.user = payload.user;
+        state.user = payload.data;
         state.error = null;
       })
       .addCase(login.rejected, (state, { payload }) => {
