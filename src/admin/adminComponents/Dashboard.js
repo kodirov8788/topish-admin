@@ -1,5 +1,6 @@
 import axios from "../../api/api";
 import React, { useEffect, useState } from "react";
+import { useGetUsers } from "../../services/users/useUsers";
 
 function Dashboard() {
   const [mainCount, setMainCount] = useState({});
@@ -20,6 +21,11 @@ function Dashboard() {
     };
     getApi();
   }, []);
+
+  const userCount = useGetUsers()
+
+  console.log(userCount);
+
   return (
     <div className="p-4 sm:ml-64">
       <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-16">

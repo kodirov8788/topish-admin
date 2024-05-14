@@ -12,11 +12,10 @@ import Editcategory from "./admin/adminComponents/category/Editcategory";
 import Editproduct from "./admin/adminComponents/product/Editproduct";
 import StartTest from "./pages/StartTest";
 import SignIn from './pages/Login';
+import Authentication from "./provider/auth.provider";
 
 function Routers() {
   const { user } = useAuthContext()
-  const { isLoading } = useContext(AuthContext)
-  console.log(isLoading)
   return (
     <div className="">
       <Routes>
@@ -28,7 +27,10 @@ function Routers() {
 
         <Route path='/countrytest' element={<Testpage />} />
         <Route path='/login' element={<SignIn />} />
-        <Route path="/admin" element={user ? <Admin /> : <Navigate to="/login" />}>
+        
+
+        <Route element={<Authentication />}>
+        <Route path="/admin" element={ <Admin />}>
           {/* Child Routes */}
           <Route path='' element={<Dashboard />} />
           <Route path='createcategory' element={<Createcategory />} />
@@ -39,6 +41,8 @@ function Routers() {
           <Route path='createproduct/:id' element={<Editproduct />} />
           {/* Add more child routes here as needed */}
         </Route>
+          </Route>
+
       </Routes>
     </div>
   );

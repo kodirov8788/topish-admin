@@ -21,16 +21,15 @@ const SignIn = () => {
   const { login } = useActions();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     login({
       phoneNumber: username,
       password: password,
       mobileToken: "fcmToken",
     });
 
-    e.preventDefault();
     // setIsLoading(true);
     // await login(username, password);
-    console.log(username, password);
     // setIsLoading(false);
   };
   return (
@@ -118,7 +117,7 @@ const SignIn = () => {
                 type="submit"
                 className="shadow  text-black dark:text-white h-10 w-3/5 mx-auto flex justify-center text-center  hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-               {isLoading ?  <ButtonSpinner/> : "Sign in"}
+                {isLoading ? <ButtonSpinner /> : "Sign in"}
               </button>
             </form>
           </div>
