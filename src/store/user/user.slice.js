@@ -4,6 +4,7 @@ import { login } from "./user.action";
 const initialState = {
   user: null,
   isLoading: false,
+  error: null
 };
 
 export const userSlice = createSlice({
