@@ -1,5 +1,4 @@
 import axios from "../api/api";
-import { message } from "antd";
 
 const AuthService = {
   async userLogin(body) {
@@ -8,7 +7,7 @@ const AuthService = {
       return response;
     } catch (error) {
       if (error?.response?.status == 400) {
-        message.error("Login yoki username xato");
+        return error.response.data.error;
       }
     }
   },
