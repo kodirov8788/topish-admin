@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.textStyle {
+  background: var(
+    --DOML-gradient-1,
+    linear-gradient(267deg, #00f0ff 4.01%, #5200ff 57.55%, #ff2df7 114.97%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-btn {
+  border-radius: 14.395px;
+  background: linear-gradient(90deg, #00f0ff 0%, #5200ff 48%, #ff2df7 100%);
+  padding: 0.48px; /* Acting as the border width */
+}
+.main__button {
+  background: white; /* or any other color or transparent if needed */
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+
+  /* background-clip: padding-box; */
+}
+.topish_typogr {
+  color: #000;
+  text-align: center;
+  font-family: 'Bungee Outline';
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+h1 {
+  @apply font-bold text-[32px] md:text-4xl;
+}
+h3 {
+  @apply font-semibold text-[16px] md:text-2xl;
+}
+p {
+  @apply text-sm md:text-lg;
+}
+.test-b {
+  @apply border border-red-500;
+}

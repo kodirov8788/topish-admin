@@ -1,0 +1,77 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function MainSix() {
+  return (
+    <div className="mb-20">
+      <div className="container md:hidden ">
+        <h1>Get Started</h1>
+        <div className="flex justify-between w-full  mt-8">
+          <img src="assets/topish_image1.png" alt="" className="w-fit" />
+          <p className="w-[200px] text-center leading-6">
+            <span className="text-[#5C6FC4]">Topish Ai</span> - Ish beruvchilar,
+            ish izlovchilar, offis ijaralari biznes platformasi
+          </p>
+        </div>
+        <div className="flex gap-5 mt-8">
+          <Link to={'#'}>
+            <img src="assets/playmarket.png" alt="" />
+          </Link>
+          <Link to={'#'}>
+            <img src="assets/applestore.png" alt="" />
+          </Link>
+        </div>
+      </div>
+      <div className="hidden relative min-h-[520px] bg-black my-5 md:flex items-center">
+        <div className="container py-10  flex justify-between items-start mb-10">
+          <div className="py-5 w-5/8 ">
+            <h1 className="text-white tracking-wider">
+              Topish AI - Tadbirkorlar Va Top insonlar uchun
+            </h1>
+            <Link
+              to={'/'}
+              className="bg-yellow-600 text-white py-2 w-fit rounded-full  justify-between items-center px-4 md:py-3 mx-auto  mt-10 md:mx-0 hidden md:flex"
+            >
+              <span className="mr-5">See Team Behind Our Success</span>
+              <img
+                src="assets/arrow-right-line.svg"
+                alt=""
+                className=" p-1 rounded-full bg-[#0000F650]"
+              />
+            </Link>
+
+            <p className="text-white/60 mt-5">
+              Ish Topish, Xodim Topish, Offis Topish
+            </p>
+          </div>
+
+          <img src="assets/topish_image2.png" alt="" className="w-[250px] " />
+        </div>
+
+        <div className="flex items-center  absolute bottom-5 right-[500px]">
+          <img src="assets/crawn.png" alt="" className="mr-20" />
+
+          <Link to={'/'} className="mr-5">
+            <img src="assets/apple2.png" alt="" />
+          </Link>
+          <Link to={'/'}>
+            <img src="assets/playmarket2.png" alt="" />
+          </Link>
+        </div>
+
+        <img
+          src="assets/star.png"
+          alt=""
+          className="absolute bottom-0 right-[300px]"
+        />
+        <img
+          src="assets/search.png"
+          alt=""
+          className="absolute bottom-0 right-[100px]"
+        />
+      </div>
+    </div>
+  );
+}
+
+export default MainSix;
