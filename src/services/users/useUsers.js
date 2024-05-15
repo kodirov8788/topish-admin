@@ -6,7 +6,7 @@ export const useGetUsers = () => {
     queryKey: ["users-get"],
     queryFn: async () =>
       await axios
-        .get(`/users/AllUsers`)
+        .get(`/admin/getUsersForAdmin`)
         .then((res) => {
           console.log(res);
           return res;
