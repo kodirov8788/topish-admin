@@ -1,30 +1,25 @@
 import axios from "../../api/api";
 import React, { useEffect, useState } from "react";
-import { useGetUsers } from "../../services/users/useUsers";
-
+import Cookies from "js-cookie";
 function Dashboard() {
   const [mainCount, setMainCount] = useState({});
   const [testCount, setTestCount] = useState({});
-  console.log(mainCount);
-  console.log(testCount);
+  const token = Cookies.get("token");
   useEffect(() => {
     const getApi = async () => {
       await axios
-        .get("/visitors/getcountmain")
-        .then((res) => setMainCount(res.data))
+        .get("/admin/getUsersForAdmin")
+        .then((res) => setMainCount(res))
         .catch((error) => console.log(error));
 
-      await axios
-        .get("/visitors/gettestcount")
-        .then((res) => setTestCount(res.data))
-        .catch((error) => console.log(error));
+      // await axios.get("/visitors/gettestcount")
+      //     .then(res => setTestCount(res.data))
+      //     .catch(error => console.log(error))
     };
     getApi();
   }, []);
 
-  const userCount = useGetUsers()
-
-  console.log(userCount);
+  console.log(mainCount, "data");
 
   return (
     <div className="p-4 sm:ml-64">
